@@ -117,6 +117,9 @@ package flare.vis.operator.label
 		/** Text used is HTML text */
 		public var isHTML:Boolean = false;
 		
+		/** The max width to apply to labels. */
+		public var maxWidth:Number = 0;
+		
 		/** The text format to apply to labels. */
 		public var textFormat:TextFormat;
 		/** The text mode to use for the TextSprite labels.
@@ -260,6 +263,9 @@ package flare.vis.operator.label
 				o.x = xOffset;
 				o.y = yOffset;
 			}
+			if (maxWidth && maxWidth != 0) {
+				label.maxWidth = maxWidth;
+			}
 			label.render();
 		}
 		
@@ -306,12 +312,15 @@ package flare.vis.operator.label
 				return null;
 			} else if (!label) {
 				label = new TextSprite("", null, textMode);
-				_access.setValue(d, label);
-				
+
 				label.applyFormat(textFormat);
+				_access.setValue(d, label);
 				
 				setLabelText(computeLabelText(d),label);
 				label.visible = visible && getLabelText(label);
+				if (maxWidth && maxWidth != 0) {
+					label.maxWidth = maxWidth;
+				}
 				
 				if (_policy == LAYER) {
 					_labels.addChild(label);
