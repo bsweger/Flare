@@ -318,7 +318,7 @@ package flare.display {
 		public function TextSprite(text : String = null, format : TextFormat = null, mode : int = BITMAP) {
 			super();
 
-			// _backgroundRenderer = null;
+			 _backgroundRenderer = null;
 			// By default this is not used!
 			_bmap = new Bitmap();
 			_tf = new TextField();
