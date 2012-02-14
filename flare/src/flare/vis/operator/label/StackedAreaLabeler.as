@@ -86,8 +86,23 @@ package flare.vis.operator.label
 			}
 			// set the next position
 			var o:Object = _t.$(label);
-            o.x = x;
-            o.y = y;
+			//terrible, terrible stuff...label positions don't look quite right with the 2013 budget numbers, so tweak them as a quick fix
+			if (label.text.toLowerCase() == 'social security & labor') {
+				o.x = x - 40;
+				o.y = y - 55;
+			} 
+			else if (label.text.toLowerCase() == 'medicare & health') {
+				o.x = x;
+				o.y = y - 40;
+			}
+			else if (label.text.toLowerCase() == 'military') {
+				o.x = x + 15;
+				o.y = y - 25;
+			}
+			else {
+				o.x = x;
+				o.y = y;
+			}
             o.size = baseSize + Math.sqrt(height);
 		}
 				
